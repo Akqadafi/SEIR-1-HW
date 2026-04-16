@@ -1,0 +1,232 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_compute_disk.grafana_disk will be created
+  + resource "google_compute_disk" "grafana_disk" {
+      + access_mode                 = (known after apply)
+      + creation_timestamp          = (known after apply)
+      + disk_id                     = (known after apply)
+      + effective_labels            = (known after apply)
+      + enable_confidential_compute = (known after apply)
+      + id                          = (known after apply)
+      + label_fingerprint           = (known after apply)
+      + last_attach_timestamp       = (known after apply)
+      + last_detach_timestamp       = (known after apply)
+      + licenses                    = (known after apply)
+      + name                        = "grafana-disk"
+      + physical_block_size_bytes   = (known after apply)
+      + project                     = "theowaf-class75-ahmadqadafi"
+      + provisioned_iops            = (known after apply)
+      + provisioned_throughput      = (known after apply)
+      + self_link                   = (known after apply)
+      + size                        = 10
+      + source_disk_id              = (known after apply)
+      + source_image_id             = (known after apply)
+      + source_snapshot_id          = (known after apply)
+      + terraform_labels            = (known after apply)
+      + type                        = "pd-standard"
+      + users                       = (known after apply)
+      + zone                        = "us-central1-a"
+
+      + guest_os_features (known after apply)
+    }
+
+  # google_compute_firewall.allow_http will be created
+  + resource "google_compute_firewall" "allow_http" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + enable_logging     = (known after apply)
+      + id                 = (known after apply)
+      + name               = "allow-http"
+      + network            = "main"
+      + priority           = 1000
+      + project            = "theowaf-class75-ahmadqadafi"
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "0.0.0.0/0",
+        ]
+
+      + allow {
+          + ports    = [
+              + "80",
+            ]
+          + protocol = "tcp"
+        }
+    }
+
+  # google_compute_firewall.allow_ssh will be created
+  + resource "google_compute_firewall" "allow_ssh" {
+      + creation_timestamp = (known after apply)
+      + destination_ranges = (known after apply)
+      + direction          = (known after apply)
+      + enable_logging     = (known after apply)
+      + id                 = (known after apply)
+      + name               = "allow-ssh"
+      + network            = "main"
+      + priority           = 1000
+      + project            = "theowaf-class75-ahmadqadafi"
+      + self_link          = (known after apply)
+      + source_ranges      = [
+          + "0.0.0.0/0",
+        ]
+
+      + allow {
+          + ports    = [
+              + "22",
+            ]
+          + protocol = "tcp"
+        }
+    }
+
+  # google_compute_instance.vm will be created
+  + resource "google_compute_instance" "vm" {
+      + can_ip_forward          = false
+      + cpu_platform            = (known after apply)
+      + current_status          = (known after apply)
+      + deletion_protection     = false
+      + effective_labels        = (known after apply)
+      + guest_accelerator       = (known after apply)
+      + id                      = (known after apply)
+      + instance_id             = (known after apply)
+      + label_fingerprint       = (known after apply)
+      + machine_type            = "e2-medium"
+      + metadata_fingerprint    = (known after apply)
+      + metadata_startup_script = <<-EOT
+            #!/bin/bash
+            sudo apt-get update -y
+            sudo apt-get install -y git
+            sudo apt-get install -y git nginx
+            
+            sudo systemctl enable nginx
+            sudo systemctl start nginx
+            
+            
+            cd /tmp
+            sudo git clone https://github.com/BalericaAI/SEIR-1.git
+            
+            sudo chmod +x /tmp/SEIR-1/weekly_lessons/weeka/userscripts/supera.sh
+            sudo bash /tmp/SEIR-1/weekly_lessons/weeka/userscripts/supera.sh
+        EOT
+      + min_cpu_platform        = (known after apply)
+      + name                    = "lab-vm"
+      + project                 = "theowaf-class75-ahmadqadafi"
+      + self_link               = (known after apply)
+      + tags                    = [
+          + "http",
+          + "http-server",
+          + "ssh",
+        ]
+      + tags_fingerprint        = (known after apply)
+      + terraform_labels        = (known after apply)
+      + zone                    = "us-central1-a"
+
+      + boot_disk {
+          + auto_delete                = true
+          + device_name                = (known after apply)
+          + disk_encryption_key_sha256 = (known after apply)
+          + kms_key_self_link          = (known after apply)
+          + mode                       = "READ_WRITE"
+          + source                     = (known after apply)
+
+          + initialize_params {
+              + image                  = "debian-cloud/debian-11"
+              + labels                 = (known after apply)
+              + provisioned_iops       = (known after apply)
+              + provisioned_throughput = (known after apply)
+              + size                   = 20
+              + type                   = (known after apply)
+            }
+        }
+
+      + confidential_instance_config (known after apply)
+
+      + network_interface {
+          + internal_ipv6_prefix_length = (known after apply)
+          + ipv6_access_type            = (known after apply)
+          + ipv6_address                = (known after apply)
+          + name                        = (known after apply)
+          + network                     = (known after apply)
+          + network_ip                  = (known after apply)
+          + stack_type                  = (known after apply)
+          + subnetwork                  = (known after apply)
+          + subnetwork_project          = (known after apply)
+
+          + access_config {
+              + nat_ip       = (known after apply)
+              + network_tier = (known after apply)
+            }
+        }
+
+      + reservation_affinity (known after apply)
+
+      + scheduling (known after apply)
+    }
+
+  # google_compute_network.main will be created
+  + resource "google_compute_network" "main" {
+      + auto_create_subnetworks                   = false
+      + delete_default_routes_on_create           = false
+      + gateway_ipv4                              = (known after apply)
+      + id                                        = (known after apply)
+      + internal_ipv6_range                       = (known after apply)
+      + mtu                                       = 1460
+      + name                                      = "main"
+      + network_firewall_policy_enforcement_order = "AFTER_CLASSIC_FIREWALL"
+      + numeric_id                                = (known after apply)
+      + project                                   = "theowaf-class75-ahmadqadafi"
+      + routing_mode                              = "REGIONAL"
+      + self_link                                 = (known after apply)
+    }
+
+  # google_compute_subnetwork.private will be created
+  + resource "google_compute_subnetwork" "private" {
+      + creation_timestamp         = (known after apply)
+      + external_ipv6_prefix       = (known after apply)
+      + fingerprint                = (known after apply)
+      + gateway_address            = (known after apply)
+      + id                         = (known after apply)
+      + internal_ipv6_prefix       = (known after apply)
+      + ip_cidr_range              = "10.0.0.0/18"
+      + ipv6_cidr_range            = (known after apply)
+      + name                       = "private-subnet"
+      + network                    = (known after apply)
+      + private_ip_google_access   = true
+      + private_ipv6_google_access = (known after apply)
+      + project                    = "theowaf-class75-ahmadqadafi"
+      + purpose                    = (known after apply)
+      + region                     = "us-central1"
+      + secondary_ip_range         = [
+          + {
+              + ip_cidr_range = "10.48.0.0/14"
+              + range_name    = "k8s-pod-range"
+            },
+          + {
+              + ip_cidr_range = "10.52.0.0/20"
+              + range_name    = "k8s-service-range"
+            },
+        ]
+      + self_link                  = (known after apply)
+      + stack_type                 = (known after apply)
+    }
+
+  # google_project_service.compute will be created
+  + resource "google_project_service" "compute" {
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "theowaf-class75-ahmadqadafi"
+      + service            = "compute.googleapis.com"
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + ssh_command    = "gcloud compute ssh lab-vm --zone us-central1-a"
+  + vm_external_ip = (known after apply)
+  + vm_internal_ip = (known after apply)
+  + vm_name        = "lab-vm"
+  + vm_url         = (known after apply)

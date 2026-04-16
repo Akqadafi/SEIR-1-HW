@@ -1,0 +1,32 @@
+Acquiring state lock. This may take a few moments...
+google_project_service.compute: Creating...
+google_compute_disk.grafana_disk: Creating...
+google_project_service.compute: Creation complete after 3s [id=theowaf-class75-ahmadqadafi/compute.googleapis.com]
+google_compute_network.main: Creating...
+google_compute_disk.grafana_disk: Still creating... [00m10s elapsed]
+google_compute_disk.grafana_disk: Creation complete after 11s [id=projects/theowaf-class75-ahmadqadafi/zones/us-central1-a/disks/grafana-disk]
+google_compute_network.main: Still creating... [00m10s elapsed]
+google_compute_network.main: Creation complete after 12s [id=projects/theowaf-class75-ahmadqadafi/global/networks/main]
+google_compute_firewall.allow_http: Creating...
+google_compute_firewall.allow_ssh: Creating...
+google_compute_subnetwork.private: Creating...
+google_compute_firewall.allow_http: Still creating... [00m10s elapsed]
+google_compute_firewall.allow_ssh: Still creating... [00m10s elapsed]
+google_compute_subnetwork.private: Still creating... [00m10s elapsed]
+google_compute_firewall.allow_ssh: Creation complete after 11s [id=projects/theowaf-class75-ahmadqadafi/global/firewalls/allow-ssh]
+google_compute_firewall.allow_http: Creation complete after 12s [id=projects/theowaf-class75-ahmadqadafi/global/firewalls/allow-http]
+google_compute_subnetwork.private: Still creating... [00m20s elapsed]
+google_compute_subnetwork.private: Creation complete after 22s [id=projects/theowaf-class75-ahmadqadafi/regions/us-central1/subnetworks/private-subnet]
+google_compute_instance.vm: Creating...
+google_compute_instance.vm: Still creating... [00m10s elapsed]
+google_compute_instance.vm: Creation complete after 13s [id=projects/theowaf-class75-ahmadqadafi/zones/us-central1-a/instances/lab-vm]
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ssh_command = "gcloud compute ssh lab-vm --zone us-central1-a"
+vm_external_ip = "136.115.10.69"
+vm_internal_ip = "10.0.0.2"
+vm_name = "lab-vm"
+vm_url = "http://136.115.10.69"
