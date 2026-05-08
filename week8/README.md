@@ -2,7 +2,7 @@
 
 ## 1. What is the difference between high availability and fault tolerance? Which is the best to strive for?
 
-High availability basically emans it's alwasy online or least most of the time. This is accomplished by removing any single point of failue. An example of this is authohealing, where is a VM stops or crahses the VM is automatially recreated based on the original configuration(Templates). Fault tolerance means the system can continue operaing even when parts of it fail. For example, using load balancers to autoscale an instance group provides fault tolerance because if any of one of the intances goes down, the others can still continue. Fault tolerace is preferred.
+High availability basically means an instance is always online or least most of the time. This is accomplished by removing any single point of failue. An example of this is authohealing, where is a VM stops or crahses the VM is automatially recreated based on the original configuration(Templates). Fault tolerance means the system can continue operaing even when parts of it fail. For example, using load balancers to autoscale an instance group provides fault tolerance because if any of one of the intances goes down, the others can still continue. Fault tolerace is preferred.
 
 ## 2. Explain the difference between autoscaling and elasticity. What is vertical and horizontal autoscaling? Is one better? Are they feasible on prem?
 
