@@ -1,6 +1,7 @@
 variable "project_id" {
-  description = "theowaf-class75-ahmadqadafi"
+  description = "GCP Project ID"
   type        = string
+  default     = "theowaf-class75-ahmadqadafi"
 }
 
 variable "region" {
