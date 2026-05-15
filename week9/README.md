@@ -62,11 +62,11 @@ POPs are edge locations closer to users. Cloud CDN uses them to serve cached con
 
 ### What kind of files are served with Cloud CDN?
 
-Cloud CDN is best for cacheable web content. This includes images, CSS, JavaScript, videos, and downloads. It works best when many users request the same content.
+Cloud CDN is best for cacheable web content. This includes images, videos, downloads, etc. and works best when many users request the same content.
 
 ### What services can be used with Cloud CDN for the source of content, the origin?
 
-Cloud CDN can use backend services and backend buckets through an external Application Load Balancer. These include VMs, managed instance groups, GKE, and Cloud Storage buckets.
+Cloud CDN can use backend services and backend buckets through an external Application Load Balancer. These include VMs, managed instance groups and Cloud Storage buckets.
 
 ### Does Cloud CDN help protect against any types of malicious actors or cyberattacks? Explain.
 
@@ -99,8 +99,8 @@ In order to accomplish this goal you will need the following:
 - MIG instances running a web service on port 80.
 - MIG has a named port configured to 80.
 - A firewall rule that allows load balancer and health check traffic to reach the backend instances.
-- Startup script already tested and confirmed to serve a page on `/`.
-- Network tag on the MIG instances, for example `http-server`.
+- Startup script already tested.
+- Network tag on the MIG instances for example `http-server`.
 - Region and zones selected for the MIG.
 
 ## Create the global external Application Load Balancer
@@ -143,8 +143,8 @@ In order to accomplish this goal you will need the following:
 3. Protocol: `HTTP`
 4. Port: `80`
 5. Turn on logs.
-6. Check interval can stay at the default unless class says otherwise.
-7. Timeout can stay at the default unless class says otherwise.
+6. Check interval can stay at the default.
+7. Timeout can stay at the default.
 8. Click **Save**.
 
 ## Add the backend
