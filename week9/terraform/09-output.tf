@@ -9,21 +9,21 @@ output "subnet_name" {
 }
 
 output "instance_template_name" {
-    description = "The name of the instance template."
-    value       = google_compute_instance_template.Instance_Template01.name
+  description = "The name of the instance template."
+  value       = google_compute_instance_template.Instance_Template01.name
 }
 
 output "instance_group_manager_name" {
-    description = "The name of the instance group manager."
-    value       = google_compute_instance_group_manager.instance_group_manager01.name
+  description = "The name of the regional instance group manager."
+  value       = google_compute_region_instance_group_manager.instance_group_manager01.name
 }
 
 output "instance_group_manager_group" {
-    description = "The name of the instance group."
-    value       = google_compute_instance_group_manager.instance_group_manager01.instance_group
+  description = "The managed instance group's underlying instance group URL."
+  value       = google_compute_region_instance_group_manager.instance_group_manager01.instance_group
 }
 
 output "health_check_name" {
-    description = "The name of the health check."
-    value       = google_compute_health_check.hc01.name
+  description = "The name of the health check."
+  value       = google_compute_health_check.hc01.name
 }
